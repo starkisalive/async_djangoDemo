@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import home_view, main_view, main_view_async
+from .views import home_view, main_view, main_view_async,scrape_view_sync, scrape_view_async
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view),
     path('sync/', main_view, name = 'sync-main-view'),
     path('async/', main_view_async, name = 'async-main-view'),
+    path('async_scrape/', scrape_view_async, name = 'async-scrape-view' ),
+    path('sync_scrape/', scrape_view_sync, name = 'sync-scrape-view' ),
 ]
