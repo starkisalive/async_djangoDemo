@@ -60,6 +60,7 @@ async def async_tasker_function():
 async def fetch(url, session, year):
     async with session.get(url) as response:
         html_body = await response.read()
+        print("fetched year", year)
         return {"body": html_body, "year": year}
 
 async def fetch_helper(start_year=2020, years_ago=5):
@@ -75,6 +76,7 @@ async def fetch_helper(start_year=2020, years_ago=5):
                     fetch(url, session, year)
                 )
             )
+
         pages_content = await asyncio.gather(*tasks)
 
 
